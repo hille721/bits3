@@ -16,7 +16,6 @@ from .utils import ProgressPercentage
 
 ### logging stuff
 logger = logging.getLogger('bits3')
-#logging.basicConfig(level=os.environ.get("BITS3_LOGLEVEL", "INFO"))
 
 
 def get_inputdir(backupdir):
@@ -81,7 +80,7 @@ def tar_and_encrypt(inputdir, secret, gpgcmd='gpg'):
     end = time.time()
 
     rc = encrypt_process.returncode
-    if not rc == 0:
+    if rc != 0:
         error = f'Calling gpg failed with return code {rc}: {stderr}'
         logger.error(error)
         return False
@@ -232,8 +231,7 @@ def bits3_cycle(backupdir, secret, bucketname,
         return False
 
     # upload to aws
-    #upload = upload_to_aws(outputfile, bucket, storageclass, progress=True)
-    upload = True
+    upload = upload_to_aws(outputfile, bucket, storageclass, progress=True)
 
     if upload:
         outputfile.unlink()
