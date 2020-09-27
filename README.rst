@@ -16,7 +16,7 @@ Installation
 ============
 .. code-block:: bash
 
-    pip install git+git://github.com/tangentlabs/django-oscar.git
+    pip install git+git://github.com/hille721/bits3.git
 
 
 Usage
