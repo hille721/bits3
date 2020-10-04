@@ -1,4 +1,6 @@
-.. image:: https://github.com/hille721/bits3/workflows/Python%20test/badge.svg
+.. image:: https://github.com/hille721/bits3/workflows/build/badge.svg
+    :alt: Built Status
+    :target: https://github.com/hille721/bits3/actions?query=workflow%3Abuild
 =====
 bits3
 =====
