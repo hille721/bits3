@@ -132,6 +132,10 @@ def check_if_upload_necessary(bucket, days=90):
         if obj.last_modified > last_upload:
             last_upload = obj.last_modified
 
+    # bucket is empty
+    if not last_upload:
+        return True
+
     # check if last upload was before `days` days
     last_upload_intervall = now - last_upload
     if (last_upload_intervall).days > days:
