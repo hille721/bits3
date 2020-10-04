@@ -1,3 +1,4 @@
+.. image:: https://github.com/hille721/bits3/workflows/Python%20test/badge.svg
 =====
 bits3
 =====
