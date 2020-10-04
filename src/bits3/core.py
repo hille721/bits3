@@ -4,6 +4,7 @@ import logging
 import os
 from pathlib import Path
 import subprocess
+import sys
 import tarfile
 import time
 
@@ -171,6 +172,8 @@ def upload_to_aws(local_file, bucket, storageclass='STANDARD_IA', progress=False
                        Callback=callback
                        )
         end = time.time()
+        if progress:
+            sys.stdout.write('\r')
         logger.info(f'{local_file.name} was successfully uploaded in {(end-start)/60.:.2f} min.')
         return True
     except FileNotFoundError:
@@ -209,7 +212,7 @@ def delete_old_uploads(bucket, keep=1):
 
 def bits3_cycle(backupdir, secret, bucketname,
                 gpgcmd='gpg', storageclass='STANDARD_IA',
-                uploadintervall=90, keep=1):
+                uploadintervall=90, keep=1, progress=False):
     '''
     Main function of bits3
     '''
@@ -235,9 +238,9 @@ def bits3_cycle(backupdir, secret, bucketname,
         return False
 
     # upload to aws
-    upload = upload_to_aws(outputfile, bucket, storageclass, progress=True)
+    upload = upload_to_aws(outputfile, bucket, storageclass, progress=progress)
 
-    if upload:
+    if upload:        
         outputfile.unlink()
         delete_old_uploads(bucket, keep=keep)
         return True

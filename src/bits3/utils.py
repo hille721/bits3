@@ -22,7 +22,7 @@ class ProgressPercentage:
             self._seen_so_far += bytes_amount
             percentage = (self._seen_so_far / self._size) * 100
             sys.stdout.write(
-                "\r%s  %.1f MB / %.1f MB  (%.2f%%)\r" % (
+                "\r%s  %.1f MB / %.1f MB  (%.2f%%)" % (
                     self._filename, self._seen_so_far/1048576, self._size/1048576,
                     percentage))
             sys.stdout.flush()

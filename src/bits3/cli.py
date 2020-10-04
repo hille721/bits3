@@ -15,6 +15,8 @@ from .core import bits3_cycle
 @click.option('--storageclass', help='AWS S3 storage class to use',
               default='STANDARD_IA', show_default=True,
               type=click.Choice(['STANDARD', 'STANDARD_IA', 'GLACIER', 'DEEP_ARCHIVE'], case_sensitive=False))
+@click.option('--progress/--no-progress', help='Print progress to stdout during S3 upload',
+              type=bool, default=False, show_default=True)
 @click.option('--gpgcmd', help='Path to GPG executable.',
               default='gpg', show_default=True)
 @click.option('--loglevel', help='Loglevel of the application.',
@@ -22,7 +24,7 @@ from .core import bits3_cycle
               type=click.Choice(['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], case_sensitive=False))
 @click.version_option()
 def cli(backupdir, bucket, secret, uploadintervall,
-        keep, storageclass, gpgcmd, loglevel):
+        keep, storageclass, progress, gpgcmd, loglevel):
     '''
     Upload last snapshot of a Backintime backup to AWS S3
 
@@ -32,7 +34,8 @@ def cli(backupdir, bucket, secret, uploadintervall,
     logging.basicConfig(level=loglevel)
     bits3_cycle(backupdir=backupdir, secret=secret, bucketname=bucket,
                 gpgcmd=gpgcmd, storageclass=storageclass,
-                uploadintervall=uploadintervall, keep=keep)
+                uploadintervall=uploadintervall, keep=keep,
+		progress=progress)
 
 
 def run():
