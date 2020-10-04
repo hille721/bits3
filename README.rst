@@ -1,6 +1,9 @@
 .. image:: https://github.com/hille721/bits3/workflows/build/badge.svg
     :alt: Built Status
     :target: https://github.com/hille721/bits3/actions?query=workflow%3Abuild
+.. image:: https://img.shields.io/pypi/v/bits3.svg
+    :alt: PyPI-Server
+    :target: https://pypi.org/project/bits3/
 
 =====
 bits3
