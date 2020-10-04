@@ -1,3 +1,7 @@
  # installs dependencies from ./setup.cfg, and the package itself,
  # in editable mode
  -e .
+pylint
+pep8
+setuptools
+wheel
