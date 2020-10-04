@@ -2,7 +2,7 @@ import os
 import sys
 import threading
 
-class ProgressPercentage(object):
+class ProgressPercentage:
     '''
     Callback class for boto3 upload_file method to show progress.
 

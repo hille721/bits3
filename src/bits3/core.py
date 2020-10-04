@@ -237,3 +237,4 @@ def bits3_cycle(backupdir, secret, bucketname,
         outputfile.unlink()
         delete_old_uploads(bucket, keep=keep)
         return True
+    return False
