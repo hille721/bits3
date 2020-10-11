@@ -25,7 +25,7 @@ This process will take a few hours for large backup directories. Thus **bits3** 
 
 Installation
 ============
-Python3.6 or greate is required.
+Python3.6 or greater is required.
 
 .. code-block::
 
